@@ -2,8 +2,6 @@
 
 const fixtureFile = 'photo.jpg';
 
-let numere = {0:'0',1:'1',2:'2',3:'3',4:'4',5:'5',6:'6',7:'7',8:'8',9:'9'};
-
 describe('Submit form', () => {
   
         beforeEach(() => {
@@ -124,7 +122,7 @@ describe('Submit form', () => {
 
         })
 
-        it.skip('Contact form 2599', () => {
+        it('Contact form 2599', () => {
           
             //Import file
             cy.get('input').filter('[type="file"]').attachFile(fixtureFile);
