@@ -4,7 +4,7 @@ const fixtureFile = 'photo.jpg';
 
 describe('Submit form', () => {
   
-        beforeEach(() => {
+        before(() => {
           cy.visit('https://www.globalsqa.com/samplepagetest/');
           
         })
@@ -40,7 +40,7 @@ describe('Submit form', () => {
             cy.get('#g2599-website[type="url"]').should('have.class', 'url')
                 .type('https://inprogress.ro').should('contain.value', 'https://').and('contain.value', '.')
 
-            cy.get('#g2599-email[type="email"]').should('have.attr', 'value')
+            cy.get('#g2599-email[type="url"]').should('have.attr', 'value')
         })
 
         it('Experience', ()=>{
@@ -110,14 +110,14 @@ describe('Submit form', () => {
               })
         })  
 
-        it.only('Comment', () => {
+        it('Comment', () => {
             cy.get('label[for="contact-form-comment-g2599-comment"]')
                 .should('have.class', 'grunion-field-label textarea').should('contain.text', 'Comment')
                 .children().should('contain.text', '(required)')
 
             cy.get('textarea[name="g2599-comment"]')
                 .should('have.id', 'contact-form-comment-g2599-comment').should('have.class', 'textarea')
-                //.type('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.')
+                .type('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.')
             .should('have.attr', 'required')
 
         })
@@ -141,7 +141,7 @@ describe('Submit form', () => {
             //Alert Box
             cy.get('button[onclick="myFunction()"]').click()
             //Comment
-            cy.get('#contact-form-comment-g2599-comment').type('This is my email address test@email.com', {delay: 100})
+            cy.get('#contact-form-comment-g2599-comment').type('This is my email address test@email.com')
             //Submit
             cy.get('button[type="submit"]').click();
          })
