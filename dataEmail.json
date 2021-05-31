@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "email": "",
+        "testCase": "Email field cannot be empty",
+        "expected": "Please fill out this field."
+    },
+    {
+        "id": 2,
+        "email": " ",
+        "testCase": "First character cannot be 'space'",
+        "expected": "Please fill out this field."
+    },
+    {
+        "id": 3,
+        "email": " testHomework@gmail.eu",
+        "testCase": "First character cannot be 'space'",
+        "expected": "Validation alert -First character cannot be ' '."
+    },
+    {
+        "id": 4,
+        "email": "asd@ testHomework.ro",
+        "testCase": "Email address cannot have 'space'",
+        "expected": "Validation alert -A part following '@' should not contain the symbol ' '."
+    },
+    {
+        "id": 5,
+        "email": "test@Homework..ru",
+        "testCase": "Type invalid email address",
+        "expected": "'.' is used at a wrong position in 'Homework..ru'."
+    },
+    {
+        "id": 6,
+        "email": "@testHomework@gmail.",
+        "testCase": "Type invalid email address",
+        "expected": "Validation alert -Please enter a part followed by '@'. '@testHomework@gmail.' is incomplete."
+    },
+    {
+        "id": 7,
+        "email": "Homework@gmail_com",
+        "testCase": "Type invalid email address",
+        "expected": "Validation alert -A part following '@' should not contain the symbol '_'."
+    },
+    {
+        "id": 8,
+        "email": "testHomework@arca.rombu",
+        "testCase": "Type invalid email address",
+        "expected": "Validation alert -A part following '@' should not contain '.rombu'."
+    },
+    {
+        "id": 9,
+        "email": "-test4Homework@gmail.com",
+        "testCase": "Type invalid email address",
+        "expected": "Validation alert -A part following '@' should not start with symbol '-'."
+    },
+    {
+        "id": 10,
+        "email": ".testHomeworkgmail.ro",
+        "testCase": "Type invalid email address",
+        "expected": "Validation alert -Please include an '@' in the email address. '.testHomeworkgmail.ro' is missing an '@'."
+    },
+    {
+        "id": 11,
+        "email": "test@.Homework5@gmail.ro",
+        "testCase": "Type invalid email address",
+        "expected": "Validation alert -A part following '@' should not contain the symbol '@'."
+    },
+    {
+        "id": 12,
+        "email": "test-Homework@gmail.ro.com",
+        "testCase": "Type valid email address",
+        "expected": "No validation alert; Focus next field."
+    },
+    {
+        "id": 13,
+        "email": "test.Homework@gmail.com",
+        "testCase": "Type valid email address",
+        "expected": "No validation alert; Focus next field."
+    }
+]

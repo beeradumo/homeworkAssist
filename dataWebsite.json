@@ -1,0 +1,73 @@
+[
+    {
+        "id": 1,
+        "website": "",
+        "testCase": "Website field can be empty",
+        "expected": "No validation alert; Focus next field."
+    },
+    {
+        "id": 2,
+        "website": " ",
+        "testCase": "First character cannot have 'space'",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 3,
+        "website": "testHomework-",
+        "testCase": "Type invalid URL address",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 4,
+        "website": "www.testHomework",
+        "testCase": "Type invalid URL address",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 5,
+        "website": "testHomework.ro",
+        "testCase": "Type invalid URL address",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 6,
+        "website": "https:/testHomework",
+        "testCase": "Type invalid URL address",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 7,
+        "website": "http://testHomework_ro",
+        "testCase": "Type invalid URL address",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 8,
+        "website": " www.testHomework.ro",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 9,
+        "website": "https://ww.testHomework.ro",
+        "testCase": "Type invalid URL address",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 10,
+        "website": "http:// testHomework.ro",
+        "testCase": "URL address cannot have 'space'",
+        "expected": "Please enter a URL."
+    },
+    {
+        "id": 11,
+        "website": "http://testHomework.ro.com",
+        "testCase": "Type a valid URL address",
+        "expected": "No validation alert; Focus next field."
+    },
+    {
+        "id": 12,
+        "website": "https://www.testHomework.ro",
+        "testCase": "Type a valid URL address",
+        "expected": "No validation alert; Focus next field."
+    }
+]

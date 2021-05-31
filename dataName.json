@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "nume": "",
+        "testCase": "The Name field cannot be empty",
+        "expected": "Validation alert -Please fill out this field."  
+    },
+    {
+        "id": 2,
+        "nume": " ",
+        "testCase": "First character cannot be 'space'",
+        "expected": "Validation alert -Please fill out this field."  
+    },
+    {
+        "id": 3,
+        "nume": "Radu - Mihail ! Gavril",
+        "testCase": "Special characters '!' are not allowed",
+        "expected": "Validation alert -Please fill without special characters '!'."  
+    },
+    {
+        "id": 4,
+        "nume": "Radu. Mihail ",
+        "testCase": "Special character '.' are not allowed",
+        "expected": "Validation alert -Please fill without special characters '.'."
+    },
+    {
+        "id": 5,
+        "nume": "123 456",
+        "testCase": "Numbers are not allowed",
+        "expected": "Validation alert -Please fill without numbers."
+    },
+    {
+        "id": 6,
+        "nume": "Radu5 Mihail - Gavril",
+        "testCase": "Numbers are not allowed",
+        "expected": "Validation alert -Please fill without numbers." 
+    },
+    {
+        "id": 7,
+        "nume": " Radu Mihail Gavril",
+        "testCase": "First character cannot be 'space'",
+        "expected": "Validation alert -First character cannot be 'space'." 
+    },
+    {
+        "id": 8,
+        "nume": "Radu Mihail@ Gavril",
+        "testCase": "Special characters '@' are not allowed",
+        "expected": "Validation alert -Please fill without special characters '@'." 
+    },
+    {
+        "id": 9,
+        "nume": "Radu- Mihail Gavril",
+        "testCase": "Input valid Name",
+        "expected": "No validation alert; Focus next field."
+    },
+    {
+        "id": 10,
+        "nume": "Radu - Mihail - Gavril",
+        "testCase": "Input valid Name",
+        "expected": "No validation alert; Focus next field."
+    }
+    
+]
