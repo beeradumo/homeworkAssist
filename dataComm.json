@@ -1,18 +1,26 @@
 [
     {
         "id" : 1,
-        "comment": ""
+        "comment": "",
+        "testCase": "The Comment field cannot be empty",
+        "expected": "Validation alert -Please fill out this field." 
     },
     {
         "id" : 2,
-        "comment": " "
+        "comment": " ",
+        "testCase": "First character cannot be 'space'",
+        "expected": "Validation alert -Please fill out this field."
     },
     {
         "id" : 3,
-        "comment": "Lor3m ipsum este textul st@nd@rd ut!l!zat pentru a 'simula' casete de text."
+        "comment": "Lor3m ipsum este textul st@nd@rd ut!l!zat pentru a 'simula' casete de text.",
+        "testCase": "Input a valid Comment",
+        "expected": "No validation alert; Focus the Submit button."
     },
     {
         "id" : 4,
-        "comment": "Lorem ipsum este textul standard utilizat pentru a simula casete de text."
+        "comment": "Lorem ipsum este textul standard utilizat pentru a simula casete de text.",
+        "testCase": "Input a valid Comment",
+        "expected": "No validation alert; Focus the Submit button."
     }
 ]
