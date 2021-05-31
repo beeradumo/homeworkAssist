@@ -5,6 +5,7 @@ let InvalidDataE = require('E:/Automation Test/Cypress/cypress-framework/cypress
 let InvalidDataW = require('E:/Automation Test/Cypress/cypress-framework/cypress/fixtures/dataWebsite.json');
 
 const pathCSV = 'E:/Automation Test/Cypress/cypress-framework/cypress/fixtures/AssistHomework.csv';
+
 const inputNume = '#g2599-name';
 const inputEmail = '#g2599-email';
 const inputWeb = 'input[name="g2599-website"]';
@@ -15,7 +16,7 @@ const inputAlert = 'button[onclick="myFunction()"]';
 const inputComment = 'textarea[name="g2599-comment"]';
 const inputSubmit = 'button[type="submit"]';
 
-const tooltipAlert = '#use-floating-validation-tip';
+const tooltipAlert = '.use-floating-validation-tip';
 
 describe('Test Contact form', () => {
     before(() =>{
@@ -27,7 +28,7 @@ describe('Test Contact form', () => {
                 const data = {
                     id: testCases.id,
                     nume: testCases.nume,
-                    tCase: testCases.testCase,
+                    testCase: testCases.testCase,
                     expected: testCases.expected
                 };
                 const ValidateName = (names) => {
@@ -45,8 +46,7 @@ describe('Test Contact form', () => {
                 .should('have.value', data.nume)
              
                // cy.get(tooltipAlert).filter('role="alert"').should('be.visible')
-    cy.writeFile(pathCSV, `${data.id}, Verify textbox Name, ${data.tCase},1)Click on Name field     2)Type values automatic     3)Press Enter, '${data.nume}', ${data.expected}, Is ${NameState}, Cypress, Pass  \n`, {flag:'a+'})
-
+    cy.writeFile(pathCSV, `${data.id}, Verify textbox Name, ${data.testCase},1)Click on Name field      2)Type values automatic     3)Press Enter, '${data.nume}', ${data.expected}, Is ${NameState}, Cypress,  \n`, {flag:'a+'})
             })
         })
     })
@@ -57,7 +57,8 @@ describe('Test Contact form', () => {
                 const data = {
                     id: testCases.id,
                     email: testCases.email,
-                    testCase: testCases.testCase
+                    testCase: testCases.testCase,
+                    expected: testCases.expected
                 };                 
                 const validateEmail = (emails) => {
                     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})\b$/;
@@ -66,7 +67,7 @@ describe('Test Contact form', () => {
 
                 const EmailState = validateEmail(data.email)
 
-            it(`Test case ${data.id+10}, Test values "${data.email}" to be true - ${EmailState}`, () => {                  
+            it(`TC ${data.id+10}, Test values "${data.email}" - ${EmailState}`, () => {                  
 
                 cy.get(inputEmail)
                     .invoke('attr', 'type', 'text')
@@ -75,12 +76,12 @@ describe('Test Contact form', () => {
                 cy.get(inputEmail).should('have.class', 'email')
                 .and('have.prop', 'ariaRequired', 'true').and('have.attr', 'required')
 
-                cy.get(inputEmail).clear().type(`${data.email}{enter}`,{delay:75}).wait(1500)
+                cy.get(inputEmail).clear().type(`${data.email}{enter}`)
                     .should('have.value', data.email)   
 
-                  cy.get('.contact-form').find('input').eq(1).should('be.focus')  
+                  //cy.get('.contact-form').find('input').eq(1).should('be.focus')  
                     
-    //cy.writeFile(pathCSV, `${data.id+10}, Verify textbox Email, ${data.testCase} ,1)Click on email field     2)Type values automatic     3)Press Enter, '${data.email}', Should be ${EmailState}, Is ${EmailState}, Cypress, Pass  \n`, {flag:'a+'})
+    cy.writeFile(pathCSV, `${data.id+10}, Verify textbox Email, ${data.testCase},1)Click on Email field      2)Type values automatic     3)Press Enter, '${data.email}', ${data.expected}, Is ${EmailState}, Cypress,  \n`, {flag:'a+'})
             })
         })
     })
@@ -90,10 +91,11 @@ describe('Test Contact form', () => {
                 const data = {
                     id: testCases.id,
                     website: testCases.website,
-                    testCase: testCases.testCase
+                    testCase: testCases.testCase,
+                    expected: testCases.expected
                 };  
                 const validateURL = (urls) => {
-                    var re = /(https?:\/\/)(www\.)?([a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,3})(\/[a-zA-Z0-9@:%_\/+.~#?&=]*)?/;
+                    var re = /(https?:\/\/)(www\.)([a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,3})(\/[a-zA-Z0-9@:%_\/+.~#?&=]*)?/;
                     return re.test(urls);
                 };
                 const WebState = validateURL(data.website)
@@ -105,10 +107,10 @@ describe('Test Contact form', () => {
                     .should('have.attr', 'type', 'text')
 
                 cy.get(inputWeb).should('have.class', 'url').should('have.attr', 'value')
-                cy.get(inputWeb).clear().type(data.website)
+                cy.get(inputWeb).clear().type(`${data.website}{enter}`)
                 .should('have.value', data.website)
 
-    //cy.writeFile(pathCSV, `${data.id+23}, Verify textbox Website, ${data.testCase} ,1)Click on website field     2)Type values automatic     3)Press Enter, '${data.website}', Should be ${WebState}, Is ${WebState}, Cypress, Pass  \n`, {flag:'a+'})            
+    cy.writeFile(pathCSV, `${data.id+23}, Verify textbox Website, ${data.testCase},1)Click on Website field      2)Type values automatic     3)Press Enter, '${data.website}', ${data.expected}, Is ${WebState}, Cypress,  \n`, {flag:'a+'})            
             })
         })
     })
@@ -123,10 +125,10 @@ describe('Test Contact form', () => {
                 cy.get(inputExperience).find('option').then(options => {
                     const actual = [...options].map(o => o.value)
                     expect(actual).to.deep.eq(['0-1', '1-3', '3-5', '5-7', '7-10', '10+'])
-                    console.log(actual)
-                
-    //cy.writeFile(pathCSV, `36, Select "Experence in year", Values in select option to be equals ,1)Click on select option     2)Select option automatic, '${actual}', Should be equal, Is equal, Cypress, Pass  \n`, {flag:'a+'})
-                            
+                    console.log(actual)  
+                        const actualCSV = actual.join('; ')
+
+    cy.writeFile(pathCSV, `36, Select "Experence in year", Values in select option to be equals ,1)Click on select option automatic, '${actualCSV}', Values should be equal, Values are equal, Cypress,  \n`, {flag:'a+'})                        
                 })
 
         })   
@@ -143,6 +145,9 @@ describe('Test Contact form', () => {
                 const actual = [...check].map(o => o.value)
                 expect(actual).to.deep.eq(['Functional Testing', 'Automation Testing', 'Manual Testing'])
                 console.log(actual)
+                    const actualCSV = actual.join("; ")
+
+    cy.writeFile(pathCSV, `37, Verify checkbox "Expertise", Values in checkbox option to be equals ,1)Click on checkbox option automatic, '${actualCSV}', Values should be equal, Values are equal, Cypress,  \n`, {flag:'a+'})            
             })
         })   
     })
@@ -158,6 +163,9 @@ describe('Test Contact form', () => {
                 const actual = [...radio].map(o => o.value)
                 expect(actual).to.deep.eq(['Graduate', 'Post Graduate', 'Other'])
                 console.log(actual)
+                    const actualCSV = actual.join("; ")
+
+    cy.writeFile(pathCSV, `38, Verify radio label "Expertise", Values in radio label option to be equals ,1)Click on radio label option automatic, '${actualCSV}', Values should be equal, Values are equal, Cypress,  \n`, {flag:'a+'})
             })
         })   
     })
@@ -178,6 +186,8 @@ describe('Test Contact form', () => {
             cy.on('window:alert', (str) => {
                 expect(str).to.equal('Good Luck. Go for it')
             })
+
+
         })   
     })
 
@@ -185,7 +195,9 @@ describe('Test Contact form', () => {
         InvalidDataC.forEach((testCases) => {
                 const data = {
                     id: testCases.id,
-                    comment: testCases.comment
+                    comment: testCases.comment,
+                    testCase: testCases.testCase,
+                    expected: testCases.expected
                 };
                 const ValidateComm = (comments) => {
                     var re = /(?!\W*$)(?=[ .\w]\w*\W*$).*$/;
@@ -199,7 +211,9 @@ describe('Test Contact form', () => {
                 cy.get(inputComment).should('have.prop', 'ariaRequired', 'true').and('have.attr', 'required')
 
                 cy.get(inputComment).clear().type(data.comment)
-                .should('have.value', data.comment)           
+                .should('have.value', data.comment)   
+                
+    cy.writeFile(pathCSV, `${data.id+39}, Verify textbox Comment, ${data.testCase},1)Click on Comment field     2)Type values automatic     3)Press Enter, '${data.comment}', ${data.expected}, Is ${CommentState}, Cypress,  \n`, {flag:'a+'})
             })
         })
     })
@@ -219,6 +233,4 @@ describe('Test Contact form', () => {
                 cy.url().should('be.eq','https://www.globalsqa.com/samplepagetest/?contact-form-hash=7451d6322607909818ec6641508a0315d590839b')        
         })   
     })
-
 })
-
